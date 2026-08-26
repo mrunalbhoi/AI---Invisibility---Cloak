@@ -10,8 +10,8 @@ class HandTracker:
 
         self.hands = self.mp_hands.Hands(
             max_num_hands=2,
-            min_detection_confidence=0.7,
-            min_tracking_confidence=0.7
+            min_detection_confidence=0.8,
+            min_tracking_confidence=0.8
         )
 
         self.draw = mp.solutions.drawing_utils
@@ -105,11 +105,20 @@ class HandTracker:
         # Draw the smoothed points
         for point in smoothed_points:
 
+             # Outer glow
             cv2.circle(
                 frame,
                 point,
-                8,
-                (255, 255, 0),
+                12,
+                (255, 255, 255),
+                2
+            )
+            # Inner point
+            cv2.circle(
+                frame,
+                point,
+                4,
+                (255, 255, 255),
                 -1
             )
 

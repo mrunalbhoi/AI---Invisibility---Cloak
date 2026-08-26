@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from utils import sort_points
+from utils import sort_points, expand_points
 
 class Effects:
 
@@ -19,7 +19,7 @@ class Effects:
             return frame
 
         pts = sort_points(points)
-
+        pts = expand_points(pts, 80)
         mask = np.zeros(frame.shape[:2], dtype=np.uint8)
 
         cv2.fillPoly(mask, [pts], 255)
