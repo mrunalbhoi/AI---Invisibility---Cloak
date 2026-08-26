@@ -16,6 +16,7 @@ while True:
     frame = cv2.flip(frame, 1)
 
     frame, points = tracker.detect(frame)
+    
 
     frame = effects.invisibility(frame, points)
 
